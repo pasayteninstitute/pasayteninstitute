@@ -16,8 +16,9 @@ Finding the best way to do that has been something of a journey. More on that la
 
 You can find out more, including links to lecture videos, at: https://pasayten.org
 
-2021-05-04
 <!--
+2021-05-04
+
 **pasayteninstitute/pasayteninstitute** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
 Here are some ideas to get you started:
