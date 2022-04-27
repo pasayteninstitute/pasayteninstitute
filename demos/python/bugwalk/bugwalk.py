@@ -63,6 +63,11 @@ class BugWalk( object ):
 class RegularBugWalk( BugWalk ):
     '''Bug walk with starting points as vertices on a regular polygon.'''
     def __init__( self , corners , resolution = 3):
+
+        if corners < 3:
+            corners = 3
+            print("Regular polygons need at least 3 vertices. Argument set to 3.")
+
         self.degree = corners
         self.length = self.getPolygonLength(self.degree)
         self.points = self.makePoints(self.degree,resolution)
