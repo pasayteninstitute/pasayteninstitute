@@ -11,6 +11,9 @@ class PartitionDataBase(object):
 
     def clean(self , x ):
         return(sorted(set(map(lambda y : tuple(sorted(y)),x)),reverse=True))
+
+    def RH(self,n):
+        return( 1/(4*n*sqrt(3)) * exp(pi * sqrt(2*n/3)) )
         
     def distributionMC( self , n , samples = 10000):
         
