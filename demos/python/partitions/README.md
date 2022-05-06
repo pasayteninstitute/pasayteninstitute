@@ -15,7 +15,7 @@ If you'd prefer to get to higher numbers, it is recommended that you save to dis
 localPartitions = PartitionDataBase("myPath/my-database-name.csv")
 
 ```
-In spite the quioxtic data structure used for storing the partitions, this will read and write everything as a CSV file. Then, you need only use the method
+We use pandas for managing the data. In spite the quioxtic data structure used for storing the partitions, this will read and write everything as a CSV file. Then, you need only use the method
 
 ```
 localPartitions.incrementPartition()
