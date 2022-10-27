@@ -147,7 +147,16 @@ class TrackCollections( object ):
         self.getNight().to_csv(filePath + self.date + "_midnight.csv")
         print("compiling early morning values...")
         self.getNight().to_csv(filePath + self.date + "_earlyMorning.csv")        
-        
+
+
+    def getNightasLaTeX( self , planet ):
+        dataframe = self.getNight()
+        dataframe = dataframe[dataframe.planet == planet ]
+        data = dataframe[["alt","az"]].applymap(lambda x : round(x,4)).apply(lambda x : (x["az"],x["alt"]),axis = 1)
+        latex = ["\\begin{tikzpicture}\n\\begin{axis}\n[xlabel=azimuth,ylabel=altitude]\n\\addplot[color=red,mark=o] coordinates {"]
+        latex += ["\n".join(data.apply(str))]
+        latex += ["};\n\end{axis}\n\end{tikzpicture}"]
+        print("\n".join(latex))
 
 Winthrop = lambda date : TrackCollections( WinthropTrack , date )
 Seattle  = lambda date : TrackCollections( SeattleTrack  , date )
