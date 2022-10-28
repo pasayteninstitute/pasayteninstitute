@@ -16,6 +16,30 @@ def dignityMatrix():
     dMatrix.index = c1
     return( dMatrix )
 
+
+def houseMatrix():
+
+    sign = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpius","Sagittarius","Capricornus","Aquarius","Pisces"]
+    ruler = ["mars","venus","mercury","moon","sun","mercury","venus","pluto","jupiter","saturn","uranus","neptune"]
+    data = pd.DataFrame()
+    data["ruler"] = ruler
+    data.index = sign
+
+    data["order"] = range(len(sign))
+    data["polarity"] = data["order"].apply(lambda x : x % 2 )
+    data["modality"] = data["order"].apply(lambda x : x % 3 )
+    data["triplicity"] = data["order"].apply(lambda x : x % 4 )
+    data["hexality"] = data["order"].apply(lambda x : x%6)
+
+    polarity = {0:1 ,1 : -1}
+    modality = { 0 : "cardinal" , 1: "fixed" , 2: "mutable"}
+    triplicity = { 0 : "fire" , 1: "earth", 2: "air" , 3: "water"}
+
+    data["polarity"] = data["polarity"].apply(lambda x : polarity.get(x))
+    data["modality"] = data["modality"].apply(lambda x : modality.get(x))
+    data["triplicity"] = data["triplicity"].apply(lambda x : triplicity.get(x))
+    return(data)
+
 def loadAstroData( filePath ):
     data = pd.read_csv(filePath,index_col=0)
     dm = dignityMatrix()
